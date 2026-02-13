@@ -5,3 +5,4 @@ import './playerLeave';
 import './playerSpawn';
 import './entityHurt';
 import './entityDie';
+import './itemUse';

@@ -12,8 +12,8 @@ export function risikoSettings(senders) {
         sender.playSound('random.pop2');
 
         menu.title('§l§4Risiko');
-        menu.button('Einstellungen', 'textures/ui/icon_setting');
-        menu.button('Königreiche', 'textures/ui/permissions_op_crown')
+        menu.button({ translate: 'risiko.ui.settings' }, 'textures/ui/icon_setting');
+        menu.button({ translate: 'risiko.ui.kingdom' }, 'textures/ui/permissions_op_crown')
         menu.show(sender).then((r) => {
             if (r.canceled) return;
 

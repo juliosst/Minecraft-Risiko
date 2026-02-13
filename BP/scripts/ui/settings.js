@@ -1,5 +1,6 @@
-import { system, world } from '@minecraft/server';
 import { ModalFormData } from '@minecraft/server-ui';
+import { system, world } from '@minecraft/server';
+import { unlockTrident } from '../runs/install';
 import { sendMessage } from '../runs/run';
 
 export function settings(sender) {
@@ -10,59 +11,65 @@ export function settings(sender) {
 
         sender.playSound('random.pop2');
 
-        settings.title('Einstelungen');
-        settings.label('Es gibt noch nicht so fiele einstelungen aber ihr könnt vorschläge auf meinem Discord einreichen :)');
+        settings.title({ translate: 'risiko.ui.settings' });
+        settings.label({ translate: 'risiko.ui.waitForMoRToggles' });
 
-        settings.label('§6Nachrichten');
-        settings.toggle('Combatlog', { defaultValue: sett?.combatMessage ?? true });
-        settings.toggle('Custom todesnachricht', { defaultValue: sett?.customDie ?? true });
-        settings.toggle('Dummy todesnachricht', { defaultValue: sett?.dummyDie ?? true });
+        settings.toggle({ translate: 'risiko.ui.blockTrident' }, { defaultValue: sett?.blockTrident ?? true });
 
-        settings.label('Dimenison');
-        settings.toggle('The End', { defaultValue: sett?.lockEnd ?? true });
-        settings.toggle('Nether', { defaultValue: sett?.lockNether ?? true });
+        settings.label({ translate: 'risiko.ui.messages' });
+        settings.toggle({ translate: 'risiko.ui.combatlog' }, { defaultValue: sett?.combatMessage ?? true });
+        settings.toggle({ translate: 'risiko.ui.custom.deathMessage' }, { defaultValue: sett?.customDie ?? true });
+        settings.toggle({ translate: 'risiko.ui.dummy.deathMessage' }, { defaultValue: sett?.dummyDie ?? true });
 
-        settings.label('§4Daten Löschen');
-        settings.toggle('Einstellungen Löschen');
-        settings.toggle('Spieler Löschen');
-        settings.toggle('Königreiche löschen');
+        settings.label({ translate: 'risiko.ui.dimenison' });
+        settings.toggle({ translate: 'risiko.ui.the-end' }, { defaultValue: sett?.lockEnd ?? true });
+        settings.toggle({ translate: 'risiko.ui.nether' }, { defaultValue: sett?.lockNether ?? true });
 
-        settings.submitButton('§l§2Speichern');
+        settings.label({ translate: 'risiko.ui.deleteData' });
+        settings.toggle({ translate: 'risiko.ui.deleteSettings' });
+        settings.toggle({ translate: 'risiko.ui.deletePlayer' });
+        settings.toggle({ translate: 'risiko.ui.deleteKingdoms' });
+
+        settings.submitButton({ translate: 'risiko.ui.save' });
 
         settings.show(sender).then((r) => {
+
             risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
 
             if (r.canceled) return;
 
-            if (!r.formValues[9]) {
-                sendMessage(sender.name, 'Einstellungen gespeichert');
+            if (!r.formValues[10]) {
+                sendMessage(sender.name, 'risiko.settings.save');
 
                 risikoSave.settings = {
-                    combatMessage: r.formValues[2],
-                    customDie: r.formValues[3],
-                    dummyDie: r.formValues[4],
-                    lockEnd: r.formValues[6],
-                    lockNether: r.formValues[7]
+                    blockTrident: r.formValues[1],
+                    combatMessage: r.formValues[3],
+                    customDie: r.formValues[4],
+                    dummyDie: r.formValues[5],
+                    lockEnd: r.formValues[7],
+                    lockNether: r.formValues[8]
                 }
             }
 
-            if (r.formValues[9]) {
-                risikoSave.settings = {}
-                sendMessage(sender.name, 'Alle Einstellungen wurden gelöscht');
-            }
-
             if (r.formValues[10]) {
-                risikoSave.player = {}
-                sendMessage(sender.name, 'Alle Spieler Daten wurden gelöscht');
+                risikoSave.settings = {}
+                sendMessage(sender.name, 'risiko.settings.deleted');
             }
 
             if (r.formValues[11]) {
+                risikoSave.player = {}
+                sendMessage(sender.name, 'risiko.players.deleted');
+            }
+
+            if (r.formValues[12]) {
                 risikoSave.kingdom = {}
-                sendMessage(sender.name, 'Alle Königreiche wurden gelöscht');
+                sendMessage(sender.name, 'risiko.kingdom.deleted');
             }
 
             world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
             sender.playSound('note.pling');
+
+            unlockTrident();
         })
     })
 }

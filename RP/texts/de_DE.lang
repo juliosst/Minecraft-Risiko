@@ -1,2 +1,53 @@
 disconnect.kicked.reason=§
 disconnect.kicked=§l§cDu wurdest gekickt
+
+entity.risiko:dummy.name=Dummy
+
+risiko.command.risiko-settings=Öffnet die Risiko Einstellungen
+risiko.command.reset-player=Löscht daten eines spielers
+
+risiko.data.reset=Daten von §e%s§r wurden gelöscht
+risiko.player.noFound=§e%s§r wurde nicht gefunden
+
+risiko.ui.settings=Einstellungen
+risiko.ui.kingdom=Königreiche
+
+risiko.death.attack=wurde von erschlagen
+risiko.offline.death=ist offline gestorben
+risiko.death.player=ist gestorben
+
+risiko.combat.start=Du bist ab jetzt im Kampf!
+
+risiko.joinMessage=§l§6Willkommen bei Minecraft Risiko!\n\n§ivon JuliosStefen\n§bBugs Melden: §r§bhttps://discord.gg/vSf4WSQRfm
+risiko.nokingdom.error=§cDu bist in kein königreich
+
+risiko.combat.end=Du bist nicht mehr im Kampf
+
+risiko.ui.title.kingdom=§l§6Königreiche
+risiko.ui.add=§l§2Hinzufügen
+risiko.ui.name=Name:
+risiko.already.exists=§e%s§r exestiert bereits
+risiko.add.kingdom.success=Das königreich §e%s§r wurde erfolgreich hinzugefügt
+risiko.add.king=König Hinzufügen
+risiko.add.member=Mitglied Hinzufügen
+risiko.ui.memberList=§6Mitglieder:
+risiko.wasAddedTo=§e%s§r wurde zu §e%s§r hinzugefügt
+
+risiko.ui.waitForMoRToggles=Es gibt noch nicht so fiele einstelungen aber ihr könnt vorschläge auf meinem Discord einreichen :)
+risiko.ui.blockTrident=Dreizack mit Sog blockieren
+risiko.ui.messages=§6Nachrichten
+risiko.ui.combatlog=Combatlog
+risiko.ui.custom.deathMessage=Custom todesnachricht
+risiko.ui.dummy.deathMessage=Dummy todesnachricht
+risiko.ui.dimenison=§6Dimenison
+risiko.ui.the-end=Das End
+risiko.ui.nether=Nether
+risiko.ui.deleteData=§4Daten Löschen
+risiko.ui.deleteSettings=Einstellungen Löschen
+risiko.ui.deletePlayer=Spieler Löschen
+risiko.ui.deleteKingdoms=Königreiche löschen
+risiko.ui.save=§l§2Speichern
+risiko.settings.save=Einstellungen gespeichert
+risiko.settings.deleted=Alle Einstellungen wurden gelöscht
+risiko.players.deleted=Alle Spieler Daten wurden gelöscht
+risiko.kingdom.deleted=Alle Königreiche wurden gelöscht

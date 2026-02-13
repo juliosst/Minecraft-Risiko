@@ -1,7 +1,9 @@
 import { world, system } from '@minecraft/server';
 
 export function installSave() {
+
     system.run(() => {
+
         if (!world.getDynamicProperty('risikoSave')) {
             world.setDynamicProperty('risikoSave', JSON.stringify({}))
         }
@@ -18,8 +20,28 @@ export function installSave() {
     })
 }
 
-export function installPlayer(name) {
+export let blockTrident;
+
+export function unlockTrident() {
+
     system.run(() => {
+
+        const setting = JSON.parse(world.getDynamicProperty('risikoSave')).settings;
+
+        if (setting?.blockTrident || setting?.blockTrident === undefined) {
+            blockTrident = true;
+        } else {
+            blockTrident = false;
+        }
+
+        blockTrident
+    })
+}
+
+export function installPlayer(name) {
+
+    system.run(() => {
+
         const risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
         const playerSave = risikoSave.player[name]
 

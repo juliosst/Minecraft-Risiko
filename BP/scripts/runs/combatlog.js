@@ -3,6 +3,7 @@ import { world, system } from '@minecraft/server';
 export const inventory = new Map();
 
 system.runInterval(() => {
+
     const risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
 
     function savePos(entity, dummy) {

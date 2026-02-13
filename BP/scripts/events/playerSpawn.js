@@ -1,17 +1,16 @@
 import { world, system } from '@minecraft/server';
+import { sendMessage } from '../runs/run';
 
 world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
 
     system.run(() => {
 
         if (initialSpawn) {
+
             const risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
             const playerSave = risikoSave.player[player.name]
 
-            player.sendMessage(`§l§6Willkommen bei Minecraft Risiko!
-        
-§ivon JuliosStefen
-§bBugs Melden: §r§bhttps://discord.gg/vSf4WSQRfm`);
+            player.sendMessage({ translate: 'risiko.joinMessage' });
 
             if (player.name !== 'JuliosStefen') { // Diese if bedingung hat keine wichtige funktion
                 player.nameTag = player.name;
@@ -19,7 +18,15 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
                 player.nameTag = `\uE301 ${player.name}`;
             }
 
-            if (playerSave.dummy?.kill) {
+            if (!risikoSave.player[player.name].kingdom) {
+
+                system.runTimeout(() => {
+
+                    sendMessage(player.name, 'risiko.nokingdom.error');
+                }, 100)
+            }
+
+            if (playerSave?.dummy && playerSave.dummy?.kill) {
 
                 const wsp = world.getDefaultSpawnLocation()
 
@@ -61,8 +68,11 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
                 }
             }
 
-            delete playerSave.dummy;
-            world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
+            if (playerSave?.dummy) {
+
+                delete playerSave.dummy;
+                world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
+            }
         }
     })
 })

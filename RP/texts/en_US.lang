@@ -2,3 +2,52 @@ disconnect.kicked.reason=§
 disconnect.kicked=§l§cYou have been kicked
 
 entity.risiko:dummy.name=Dummy
+
+risiko.command.risiko-settings=Opens the Risiko settings
+risiko.command.reset-player=Deletes a player's data
+
+risiko.data.reset=Data of §e%s§r has been deleted
+risiko.player.noFound=§e%s§r was not found
+
+risiko.ui.settings=Settings
+risiko.ui.kingdom=Kingdoms
+
+risiko.death.attack=%s was slain by %s
+risiko.offline.death=%s died while offline
+risiko.death.player=%s died
+
+risiko.combat.start=You are now in combat!
+
+risiko.joinMessage=§l§6Welcome to Minecraft Risiko!\n\n§iby JuliosStefen\n§bReport bugs: §r§bhttps://discord.gg/vSf4WSQRfm
+risiko.nokingdom.error=§cYou are not in a kingdom
+
+risiko.combat.end=You are no longer in combat
+
+risiko.ui.title.kingdom=§l§6Kingdoms
+risiko.ui.add=§l§2Add
+risiko.ui.name=Name:
+risiko.already.exists=§e%s§r already exists
+risiko.add.kingdom.success=The kingdom §e%s§r was successfully added
+risiko.add.king=Add King
+risiko.add.member=Add Member
+risiko.ui.memberList=§6Members:
+risiko.wasAddedTo=§e%s§r was added to §e%s§r
+
+risiko.ui.waitForMoRToggles=There are not many settings yet, but you can submit suggestions on my Discord :)
+risiko.ui.blockTrident=Block trident with Riptide
+risiko.ui.messages=§6Messages
+risiko.ui.combatlog=Combat log
+risiko.ui.custom.deathMessage=Custom death message
+risiko.ui.dummy.deathMessage=Dummy death message
+risiko.ui.dimenison=§6Dimension
+risiko.ui.the-end=The End
+risiko.ui.nether=Nether
+risiko.ui.deleteData=§4Delete Data
+risiko.ui.deleteSettings=Delete Settings
+risiko.ui.deletePlayer=Delete Player
+risiko.ui.deleteKingdoms=Delete Kingdoms
+risiko.ui.save=§l§2Save
+risiko.settings.save=Settings saved
+risiko.settings.deleted=All settings have been deleted
+risiko.players.deleted=All player data has been deleted
+risiko.kingdom.deleted=All kingdoms have been deleted

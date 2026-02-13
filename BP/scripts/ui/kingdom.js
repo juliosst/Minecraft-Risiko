@@ -1,19 +1,19 @@
 import { system, world } from '@minecraft/server';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
-import { installPlayer } from '../runs/install'
 
 import { sendMessage } from '../runs/run';
 
 export function kingdom(sender) {
 
     system.run(() => {
+
         let risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
         const kingdomlist = new ActionFormData();
 
         sender.playSound('random.pop2');
 
-        kingdomlist.title('§l§6Königreiche');
-        kingdomlist.button('§l§2Hinzufügen', 'textures/ui/ui-plus');
+        kingdomlist.title({ translate: 'risiko.ui.title.kingdom' });
+        kingdomlist.button({ translate: 'risiko.ui.add' }, 'textures/ui/ui-plus');
 
         for (const kingdomName of Object.keys(risikoSave.kingdom)) {
 
@@ -32,9 +32,9 @@ export function kingdom(sender) {
             if (r.selection === 0) {
                 const add = new ModalFormData();
 
-                add.title('§l§6Königreiche');
-                add.textField('Name:', '');
-                add.submitButton('§l§2Hinzufügen');
+                add.title({ translate: 'risiko.ui.title.kingdom' });
+                add.textField({ translate: 'risiko.ui.name' }, '');
+                add.submitButton({ translate: 'risiko.ui.add' });
                 add.show(sender).then((r) => {
                     if (r.canceled) return;
 
@@ -42,7 +42,7 @@ export function kingdom(sender) {
 
                     if (risikoSave.kingdom[r.formValues[0]]) {
 
-                        sendMessage(sender.name, `Das königreich §e${r.formValues}§r exestiert bereits`);
+                        sendMessage(sender.name, 'risiko.already.exists', [String(r.formValues)]);
                         sender.playSound('note.bass');
 
                     } else if (!risikoSave.kingdom[r.formValues[0]]) {
@@ -57,7 +57,7 @@ export function kingdom(sender) {
                         kingdom(sender);
 
                         sender.playSound('note.pling');
-                        sendMessage(sender.name, `Das königreich §e${r.formValues}§r wurde erfolgreich hinzugefügt`);
+                        sendMessage(sender.name, 'risiko.add.kingdom.success', [String(r.formValues)]);
                     }
                 })
             }
@@ -69,9 +69,9 @@ export function kingdom(sender) {
                 const kingdomSave = Object.keys(risikoSave.kingdom)[r.selection - 1]
 
                 kingdomSettings.title(kingdomSave);
-                kingdomSettings.button('König Hinzufügen', 'textures/ui/permissions_op_crown');
-                kingdomSettings.button('Mitglied Hinzufügen', 'textures/ui/permissions_member_star');
-                kingdomSettings.label('§6Mitglieder:');
+                kingdomSettings.button({ translate: 'risiko.add.king' }, 'textures/ui/permissions_op_crown');
+                kingdomSettings.button({ translate: 'risiko.add.member' }, 'textures/ui/permissions_member_star');
+                kingdomSettings.label({ translate: 'risiko.ui.memberList' });
 
                 for (const king of Object.keys(risikoSave.kingdom[kingdomSave].kings)) {
                     kingdomSettings.button(king, 'textures/ui/permissions_op_crown');
@@ -90,9 +90,10 @@ export function kingdom(sender) {
                         const add = new ModalFormData();
 
                         add.title(`§l§6${kingdomSave}`);
-                        add.textField('Name:', '');
-                        add.submitButton('§l§2Hinzufügen');
+                        add.textField({ translate: 'risiko.ui.name' }, '');
+                        add.submitButton({ translate: 'risiko.ui.add' });
                         add.show(sender).then((r) => {
+
                             if (r.canceled) return;
 
                             risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
@@ -106,7 +107,7 @@ export function kingdom(sender) {
 
                             if (addKing || addMember) {
 
-                                sendMessage(sender.name, `§e${r.formValues}§r exestiert bereits`);
+                                sendMessage(sender.name, 'risiko.already.exists', String(r.formValues));
                                 sender.playSound('note.bass');
 
                             } else if (!addKing && !addMember) {
@@ -124,7 +125,7 @@ export function kingdom(sender) {
                                 kingdom(sender);
 
                                 sender.playSound('note.pling');
-                                sendMessage(sender.name, `§e${r.formValues}§r wurde zu §e${kingdomSave}§r hinzugefügt`);
+                                sendMessage(sender.name, 'risiko.wasAddedTo', [String(r.formValues), kingdomSave])
                             }
                         })
                     }
@@ -133,8 +134,8 @@ export function kingdom(sender) {
                         const add = new ModalFormData();
 
                         add.title(`§l§6${kingdomSave}`);
-                        add.textField('Name:', '');
-                        add.submitButton('§l§2Hinzufügen');
+                        add.textField({ translate: 'risiko.ui.name' }, '');
+                        add.submitButton({ translate: 'risiko.ui.add' });
                         add.show(sender).then((r) => {
                             if (r.canceled) return;
 
@@ -149,7 +150,7 @@ export function kingdom(sender) {
 
                             if (addMember || addKing) {
 
-                                sendMessage(sender.name, `§e${r.formValues}§r exestiert bereits`);
+                                sendMessage(sender.name, 'risiko.already.exists', [String(r.formValues)])
                                 sender.playSound('note.bass');
 
                             } else if (!addMember && !addKing) {
@@ -165,7 +166,8 @@ export function kingdom(sender) {
                                 kingdom(sender);
 
                                 sender.playSound('note.pling');
-                                sendMessage(sender.name, `§e${r.formValues}§r wurde zu §e${kingdomSave}§r hinzugefügt`);
+
+                                sendMessage(sender.name, 'risiko.wasAddedTo', [String(r.formValues), kingdomSave]);
                             }
                         })
                     }

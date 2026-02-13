@@ -33,9 +33,10 @@ world.afterEvents.entityDie.subscribe(({ deadEntity, damageSource }) => {
             const killerSave = risikoSave.player[killer?.name]
 
             if (killer?.typeId === 'minecraft:player') {
-                sendMessage('world', `${deadEntity.name} wurde von ${killer.name} erschlagen`);
+
+                sendMessage('world', 'risiko.death.attack', [deadEntity.name, killer.name]);
             } else {
-                sendMessage('world', `${deadEntity.name} ist gestorben`);
+                sendMessage('world', 'risiko.death.player', [deadEntity.name]);
             }
 
             if (playerSave?.health >= 2) {
@@ -65,7 +66,7 @@ world.afterEvents.entityDie.subscribe(({ deadEntity, damageSource }) => {
 
         if (deadEntity.typeId === 'risiko:dummy') {
 
-            sendMessage('world', `${deadEntity.nameTag} ist offline gestorben`);
+            sendMessage('world', 'risiko.offline.death', deadEntity.nameTag);
             clearCombat(true);
         }
     })

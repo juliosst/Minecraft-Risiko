@@ -1,6 +1,6 @@
 import { world, system } from '@minecraft/server';
 import { setDummy } from './gameRuleChange';
-import { inventory } from '../combatlog';
+import { inventory } from '../runs/combatlog';
 
 export function spawnDummy(name) {
 
