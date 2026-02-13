@@ -1,0 +1,42 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"bridge."
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.54"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Minecraft Risiko",
+		"description": "minecraft Risiko",
+		"min_engine_version": [
+			1,
+			21,
+			120
+		],
+		"uuid": "931d8110-d4e9-4892-96f5-376e07cf1355",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "9219adf3-a7bd-46ca-9d61-32dc9edae9e0",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}
