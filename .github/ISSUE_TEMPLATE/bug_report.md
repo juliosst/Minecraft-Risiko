@@ -28,4 +28,4 @@ Paste any relevant content log errors here.
 
 You can activate logs in Minecraft by enabling the 3 settings under "Creator" at the bottom of the preferences and setting the GUI log level to "Verbatim".
 
-![Image will be displayed after creation](https://github.com/juliosst/Minecraft-Risiko/blob/main/.github/template_icons/show_logs.png?raw=true)
+![Image will be displayed after creation](https://github.com/juliosst/Minecraft-Risiko/blob/Risiko/.github/template_icons/show_logs.png?raw=true)
