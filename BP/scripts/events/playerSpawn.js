@@ -1,5 +1,5 @@
 import { world, system } from '@minecraft/server';
-import { sendMessage } from '../runs/run';
+import { sendMessage, version } from '../runs/run';
 
 world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
 
@@ -10,7 +10,7 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
             const risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
             const playerSave = risikoSave.player[player.name]
 
-            player.sendMessage({ translate: 'risiko.joinMessage' });
+            player.sendMessage({ translate: 'risiko.joinMessage', with: [version] });
 
             if (player.name !== 'JuliosStefen') { // Diese if bedingung hat keine wichtige funktion
                 player.nameTag = player.name;

@@ -41,4 +41,4 @@ system.runInterval(() => {
             }
         }
     }
-})
+}, 5)

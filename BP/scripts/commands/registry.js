@@ -7,13 +7,13 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
     customCommandRegistry.registerCommand({
         name: 'risiko:risiko-settings',
         description: 'risiko.command.risiko-settings',
-        permissionLevel: 2
+        permissionLevel: 1
     }, risikoSettings);
 
     customCommandRegistry.registerCommand({
         name: 'risiko:reset-player',
         description: 'risiko.command.reset-player',
-        permissionLevel: 2,
+        permissionLevel: 1,
         mandatoryParameters: [
             { type: CustomCommandParamType.String, name: 'Name' }
         ]
@@ -22,7 +22,7 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
     customCommandRegistry.registerCommand({
         name: 'risiko:hearth',
         description: 'risiko.command.hearth',
-        permissionLevel: 2,
+        permissionLevel: 1,
         mandatoryParameters: [
             { type: CustomCommandParamType.String, name: 'Name' },
             { type: CustomCommandParamType.Integer, name: 'Herzen' }

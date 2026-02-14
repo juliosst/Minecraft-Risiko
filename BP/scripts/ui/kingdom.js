@@ -98,9 +98,7 @@ export function kingdom(sender) {
 
                             risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
 
-                            if (!risikoSave.player[r.formValues]) {
-                                risikoSave.player[r.formValues] = {}
-                            }
+                            risikoSave.player[r.formValues] ??= {}
 
                             let addKing = risikoSave.kingdom[kingdomSave].kings[r.formValues]
                             let addMember = risikoSave.kingdom[kingdomSave].members[r.formValues]
@@ -141,9 +139,7 @@ export function kingdom(sender) {
 
                             risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
 
-                            if (!risikoSave.player[r.formValues]) {
-                                risikoSave.player[r.formValues] = {}
-                            }
+                            risikoSave.player[r.formValues] ??= {}
 
                             let addKing = risikoSave.kingdom[kingdomSave].kings[r.formValues]
                             let addMember = risikoSave.kingdom[kingdomSave].members[r.formValues]

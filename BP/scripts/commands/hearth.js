@@ -32,7 +32,7 @@ export function hearth(senders, name, hearth) {
             if (hearth <= 1 && hearth >= 0) {
 
                 setHeart();
-                sendMessage('risiko.setHeart.message', [name, hearth], sender.name);
+                sendMessage('risiko.setHeart.message', [String(name), String(hearth)], sender.name);
 
             } else {
 

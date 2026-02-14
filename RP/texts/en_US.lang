@@ -7,7 +7,6 @@ risiko.command.risiko-settings=Opens the Risiko settings
 risiko.command.reset-player=Deletes a player's data
 risiko.command.hearth=Set the hearts of other players
 
-
 risiko.notAllowed.nummber=§cOnly the value of §e%s - %s§c is allowed
 risiko.setHeart.message=The hearts of §e%s§r were set on §e%s§r
 risiko.data.reset=Data of §e%s§r has been deleted
@@ -22,7 +21,7 @@ risiko.death.player=%s died
 
 risiko.combat.start=You are now in combat!
 
-risiko.joinMessage=§l§6Welcome to Minecraft Risiko!\n\n§iby JuliosStefen\n§bReport bugs: §r§bhttps://discord.gg/vSf4WSQRfm
+risiko.joinMessage=§l§6Welcome to Minecraft Risiko! §i(v%s)\n\n§iby JuliosStefen\n§bReport bugs: §r§bhttps://discord.gg/vSf4WSQRfm
 risiko.nokingdom.error=§cYou are not in a kingdom
 
 risiko.combat.end=You are no longer in combat
