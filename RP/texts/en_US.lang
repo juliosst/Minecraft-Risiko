@@ -5,7 +5,11 @@ entity.risiko:dummy.name=Dummy
 
 risiko.command.risiko-settings=Opens the Risiko settings
 risiko.command.reset-player=Deletes a player's data
+risiko.command.hearth=Set the hearts of other players
 
+
+risiko.notAllowed.nummber=§cOnly the value of §e%s - %s§c is allowed
+risiko.setHeart.message=The hearts of §e%s§r were set on §e%s§r
 risiko.data.reset=Data of §e%s§r has been deleted
 risiko.player.noFound=§e%s§r was not found
 

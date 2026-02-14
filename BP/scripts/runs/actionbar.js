@@ -19,8 +19,9 @@ system.runInterval(() => {
 
                 if (combat <= 0.500) {
 
-                    sendMessage(player.name, 'risiko.combat.end');
+                    sendMessage('risiko.combat.end', '', player.name);
                     playerSave.combatlog = 'xxx';
+                    if (playerSave?.dummy) { delete playerSave.dummy }
                     world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
                 }
 
@@ -28,7 +29,7 @@ system.runInterval(() => {
 
             } else if (playerSave?.health >= 2) {
 
-                player.runCommand(`titleraw @s actionbar {"rawtext":[{"text":"\n\n\n\uE200 \uE200"}]}`);
+                player.runCommand(`titleraw @s actionbar {"rawtext":[{"text":"\n\n\n\uE200\uE200"}]}`);
 
             } else if (playerSave?.health === 1) {
 

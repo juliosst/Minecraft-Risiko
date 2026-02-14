@@ -5,16 +5,21 @@ entity.risiko:dummy.name=Dummy
 
 risiko.command.risiko-settings=Öffnet die Risiko Einstellungen
 risiko.command.reset-player=Löscht daten eines spielers
+risiko.command.hearth=Legt die Herzen von anderen spielern fest
 
+## Hinzugefügt
+risiko.notAllowed.nummber=§cEs ist nur der wert von §e%s - %s§c erlaubt
+risiko.setHeart.message=Die Herzen von §e%s§r wurden auf §e%s§r gesetzt
+## Hinzugefügt
 risiko.data.reset=Daten von §e%s§r wurden gelöscht
 risiko.player.noFound=§e%s§r wurde nicht gefunden
 
 risiko.ui.settings=Einstellungen
 risiko.ui.kingdom=Königreiche
 
-risiko.death.attack=wurde von erschlagen
-risiko.offline.death=ist offline gestorben
-risiko.death.player=ist gestorben
+risiko.death.attack=%s wurde von %s erschlagen
+risiko.offline.death=%s ist offline gestorben
+risiko.death.player=%s ist gestorben
 
 risiko.combat.start=Du bist ab jetzt im Kampf!
 

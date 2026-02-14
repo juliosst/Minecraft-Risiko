@@ -9,13 +9,13 @@ import '../events/event';
 import './actionbar';
 import './combatlog';
 
-export function sendMessage(name, translate, withs) {
+export function sendMessage(translate, withs, name) {
 
     system.run(() => {
 
-        const message = { rawtext: [{ text: '\uE300 ' }, { translate, with: withs }] }
+        const message = { rawtext: [{ text: '\uE300 ' }, { translate, with: [...withs] }] }
 
-        if (name === 'world') {
+        if (name === undefined) {
 
             world.sendMessage(message);
 

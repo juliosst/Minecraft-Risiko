@@ -18,11 +18,11 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
                 player.nameTag = `\uE301 ${player.name}`;
             }
 
-            if (!risikoSave.player[player.name].kingdom) {
+            if (!risikoSave.player[player.name]?.kingdom) {
 
                 system.runTimeout(() => {
 
-                    sendMessage(player.name, 'risiko.nokingdom.error');
+                    sendMessage('risiko.nokingdom.error', '', player.name);
                 }, 100)
             }
 
@@ -42,7 +42,7 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
                 player.addEffect('saturation', 5, { amplifier: 255, showParticles: false });
                 player.addEffect('resistance', 5, { amplifier: 255, showParticles: false });
 
-                if (!playerSave.dummy?.keepInventory) {
+                if (playerSave.dummy.keepInventory === false) {
 
                     player.runCommand('clear @s');
                     player.resetLevel();

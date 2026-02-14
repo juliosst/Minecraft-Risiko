@@ -42,7 +42,7 @@ export function kingdom(sender) {
 
                     if (risikoSave.kingdom[r.formValues[0]]) {
 
-                        sendMessage(sender.name, 'risiko.already.exists', [String(r.formValues)]);
+                        sendMessage('risiko.already.exists', [String(r.formValues)], sender.name);
                         sender.playSound('note.bass');
 
                     } else if (!risikoSave.kingdom[r.formValues[0]]) {
@@ -107,7 +107,7 @@ export function kingdom(sender) {
 
                             if (addKing || addMember) {
 
-                                sendMessage(sender.name, 'risiko.already.exists', String(r.formValues));
+                                sendMessage('risiko.already.exists', String(r.formValues), sender.name);
                                 sender.playSound('note.bass');
 
                             } else if (!addKing && !addMember) {
@@ -125,7 +125,7 @@ export function kingdom(sender) {
                                 kingdom(sender);
 
                                 sender.playSound('note.pling');
-                                sendMessage(sender.name, 'risiko.wasAddedTo', [String(r.formValues), kingdomSave])
+                                sendMessage('risiko.wasAddedTo', [String(r.formValues), kingdomSave], sender.name)
                             }
                         })
                     }
@@ -150,7 +150,7 @@ export function kingdom(sender) {
 
                             if (addMember || addKing) {
 
-                                sendMessage(sender.name, 'risiko.already.exists', [String(r.formValues)])
+                                sendMessage('risiko.already.exists', String(r.formValues), sender.name)
                                 sender.playSound('note.bass');
 
                             } else if (!addMember && !addKing) {
@@ -167,7 +167,7 @@ export function kingdom(sender) {
 
                                 sender.playSound('note.pling');
 
-                                sendMessage(sender.name, 'risiko.wasAddedTo', [String(r.formValues), kingdomSave]);
+                                sendMessage('risiko.wasAddedTo', [String(r.formValues), kingdomSave], sender.name);
                             }
                         })
                     }

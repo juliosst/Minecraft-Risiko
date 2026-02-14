@@ -29,9 +29,6 @@
 			}
 		},
 		"components": {
-			"minecraft:experience_reward": {
-				"on_death": 50
-			},
 			"minecraft:inventory": {
 				"container_type": "inventory",
 				"inventory_size": 41,

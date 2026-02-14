@@ -2,14 +2,41 @@ import { world, system } from '@minecraft/server';
 import { sendMessage } from '../runs/run';
 
 world.afterEvents.entityDie.subscribe(({ deadEntity, damageSource }) => {
+
     system.run(() => {
-        let risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
+
+        const risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
         const killer = damageSource.damagingEntity;
+
+        function removeHearth(entity) {
+
+            const entitySave = risikoSave.player[entity]
+            const killerSave = risikoSave.player[killer?.name]
+
+            if (entitySave?.health >= 2) {
+
+                entitySave.health = 1
+
+            } else if (entitySave?.health === 1 && killer?.typeId === 'minecraft:player') {
+
+                if (entitySave.kingdom && killerSave?.kingdom) {
+
+                    if (entitySave?.king && killerSave?.king && entitySave.kingdom !== killerSave.kingdom) {
+
+                        entitySave.health = 0;
+
+                    } else if (!entitySave?.king && entitySave.kingdom !== killerSave.kingdom) {
+
+                        entitySave.health = 0;
+                    }
+                }
+            }
+
+            world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
+        }
 
         function clearCombat(dummy) {
             const entitySave = risikoSave.player[!dummy ? deadEntity.name : deadEntity.nameTag]
-
-            risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
 
             if (entitySave.combatlog >= 0) {
                 entitySave.combatlog = 'xxx';
@@ -29,44 +56,22 @@ world.afterEvents.entityDie.subscribe(({ deadEntity, damageSource }) => {
         }
 
         if (deadEntity.typeId === 'minecraft:player') {
-            const playerSave = risikoSave.player[deadEntity.name]
-            const killerSave = risikoSave.player[killer?.name]
 
             if (killer?.typeId === 'minecraft:player') {
 
-                sendMessage('world', 'risiko.death.attack', [deadEntity.name, killer.name]);
+                sendMessage('risiko.death.attack', [deadEntity.name, killer.name]);
             } else {
-                sendMessage('world', 'risiko.death.player', [deadEntity.name]);
+                sendMessage('risiko.death.player', [deadEntity.name]);
             }
 
-            if (playerSave?.health >= 2) {
-
-                playerSave.health = 1
-
-            } else if (playerSave?.health === 1 && killer?.typeId === 'minecraft:player') {
-
-                if (playerSave.kingdom && killerSave?.kingdom) {
-
-                    if (playerSave?.king && killerSave?.king && playerSave.kingdom !== killerSave.kingdom) {
-
-                        playerSave.health = 0;
-
-                    } else if (!playerSave?.king && playerSave.kingdom !== killerSave.kingdom) {
-
-                        playerSave.health = 0;
-                    }
-                }
-
-
-            }
-
-            playerSave.combatlog = 'xxx';
-            world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
+            removeHearth(deadEntity.name);
+            clearCombat(false);
         }
 
         if (deadEntity.typeId === 'risiko:dummy') {
 
-            sendMessage('world', 'risiko.offline.death', deadEntity.nameTag);
+            sendMessage('risiko.offline.death', [deadEntity.nameTag]);
+            removeHearth(deadEntity.nameTag);
             clearCombat(true);
         }
     })
