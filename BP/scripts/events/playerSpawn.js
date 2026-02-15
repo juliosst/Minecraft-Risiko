@@ -10,7 +10,12 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
             const risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
             const playerSave = risikoSave.player[player.name]
 
-            player.sendMessage({ translate: 'risiko.joinMessage', with: [version] });
+            player.sendMessage({ translate: 'risiko.joinMessage', with: [version], name: player.name });
+
+            system.runTimeout(() => {
+                sendMessage('risiko.support.message', { name: player.name });
+                player.playSound('note.pling');
+            }, 1200);
 
             if (player.name !== 'JuliosStefen') { // Diese if bedingung hat keine wichtige funktion
                 player.nameTag = player.name;
@@ -22,7 +27,7 @@ world.afterEvents.playerSpawn.subscribe(({ player, initialSpawn }) => {
 
                 system.runTimeout(() => {
 
-                    sendMessage('risiko.nokingdom.error', '', player.name);
+                    sendMessage('risiko.nokingdom.error', { name: player.name });
                 }, 100)
             }
 

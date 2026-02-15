@@ -11,7 +11,7 @@ import '../events/event';
 import './actionbar';
 import './combatlog';
 
-export function sendMessage(translate, withs, name) {
+export function sendMessage(translate, { withs = [], name } = {}) {
 
     system.run(() => {
 

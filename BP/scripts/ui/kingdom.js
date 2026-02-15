@@ -42,7 +42,7 @@ export function kingdom(sender) {
 
                     if (risikoSave.kingdom[r.formValues[0]]) {
 
-                        sendMessage('risiko.already.exists', [String(r.formValues)], sender.name);
+                        sendMessage('risiko.already.exists', { withs: r.formValues[0], name: sender.name });
                         sender.playSound('note.bass');
 
                     } else if (!risikoSave.kingdom[r.formValues[0]]) {
@@ -57,7 +57,7 @@ export function kingdom(sender) {
                         kingdom(sender);
 
                         sender.playSound('note.pling');
-                        sendMessage('risiko.add.kingdom.success', [String(r.formValues)], sender.name);
+                        sendMessage('risiko.add.kingdom.success', { withs: r.formValues[0], name: sender.name });
                     }
                 })
             }
@@ -98,21 +98,21 @@ export function kingdom(sender) {
 
                             risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
 
-                            risikoSave.player[r.formValues] ??= {}
+                            risikoSave.player[r.formValues[0]] ??= {}
 
-                            let addKing = risikoSave.kingdom[kingdomSave].kings[r.formValues]
-                            let addMember = risikoSave.kingdom[kingdomSave].members[r.formValues]
+                            let addKing = risikoSave.kingdom[kingdomSave].kings[r.formValues[0]]
+                            let addMember = risikoSave.kingdom[kingdomSave].members[r.formValues[0]]
 
                             if (addKing || addMember) {
 
-                                sendMessage('risiko.already.exists', String(r.formValues), sender.name);
+                                sendMessage('risiko.already.exists', { withs: r.formValues[0], name: sender.name });
                                 sender.playSound('note.bass');
 
                             } else if (!addKing && !addMember) {
 
-                                const playerSave = risikoSave.player[r.formValues]
+                                const playerSave = risikoSave.player[r.formValues[0]]
 
-                                risikoSave.kingdom[kingdomSave].kings[r.formValues] = true;
+                                risikoSave.kingdom[kingdomSave].kings[r.formValues[0]] = true;
 
                                 playerSave.kingdom = kingdomSave
                                 playerSave.health = 2
@@ -123,7 +123,7 @@ export function kingdom(sender) {
                                 kingdom(sender);
 
                                 sender.playSound('note.pling');
-                                sendMessage('risiko.wasAddedTo', [String(r.formValues), kingdomSave], sender.name)
+                                sendMessage('risiko.wasAddedTo', { withs: [r.formValues[0], kingdomSave], name: sender.name })
                             }
                         })
                     }
@@ -139,21 +139,21 @@ export function kingdom(sender) {
 
                             risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
 
-                            risikoSave.player[r.formValues] ??= {}
+                            risikoSave.player[r.formValues[0]] ??= {}
 
-                            let addKing = risikoSave.kingdom[kingdomSave].kings[r.formValues]
-                            let addMember = risikoSave.kingdom[kingdomSave].members[r.formValues]
+                            let addKing = risikoSave.kingdom[kingdomSave].kings[r.formValues[0]]
+                            let addMember = risikoSave.kingdom[kingdomSave].members[r.formValues[0]]
 
                             if (addMember || addKing) {
 
-                                sendMessage('risiko.already.exists', String(r.formValues), sender.name)
+                                sendMessage('risiko.already.exists', { withs: r.formValues[0], name: sender.name })
                                 sender.playSound('note.bass');
 
                             } else if (!addMember && !addKing) {
 
-                                const playerSave = risikoSave.player[r.formValues]
+                                const playerSave = risikoSave.player[r.formValues[0]]
 
-                                risikoSave.kingdom[kingdomSave].members[r.formValues] = true;
+                                risikoSave.kingdom[kingdomSave].members[r.formValues[0]] = true;
                                 playerSave.kingdom = kingdomSave
                                 playerSave.health = 1
 
@@ -163,7 +163,7 @@ export function kingdom(sender) {
 
                                 sender.playSound('note.pling');
 
-                                sendMessage('risiko.wasAddedTo', [String(r.formValues), kingdomSave], sender.name);
+                                sendMessage('risiko.wasAddedTo', { withs: [r.formValues[0], kingdomSave], name: sender.name });
                             }
                         })
                     }

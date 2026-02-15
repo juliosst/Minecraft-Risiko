@@ -19,7 +19,7 @@ system.runInterval(() => {
 
                 if (combat <= 0.500) {
 
-                    sendMessage('risiko.combat.end', '', player.name);
+                    sendMessage('risiko.combat.end', { withs: player.name });
                     playerSave.combatlog = 'xxx';
                     if (playerSave?.dummy) { delete playerSave.dummy }
                     world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
@@ -37,7 +37,7 @@ system.runInterval(() => {
 
             } else if (playerSave?.health === 0) {
 
-                player.runCommand(`kick ${player.name} Du bist Gestorben`);
+                player.runCommand(`kick ${player.name} §l§cDu bist AUSGESCHIEDEN!§r\n§iDu hast alle Herzen verloren.`);
             }
         }
     }

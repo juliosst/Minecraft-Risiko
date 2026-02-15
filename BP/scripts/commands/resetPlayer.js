@@ -14,12 +14,12 @@ export function resetPlayer(senders, select) {
 
             sender.playSound('note.pling');
 
-            sendMessage('risiko.data.reset', [select], sender.name);
+            sendMessage('risiko.data.reset', { withs: select, name: sender.name });
 
         } else if (!risikoSave.player[select]) {
 
             sender.playSound('note.bass');
-            sendMessage('risiko.player.noFound', [select], sender.name);
+            sendMessage('risiko.player.noFound', { withs: select, name: sender.name });
         }
     })
 }

@@ -8,36 +8,41 @@ export function hearth(senders, name, hearth) {
         const sender = senders.sourceEntity
 
         const risikoSave = JSON.parse(world.getDynamicProperty('risikoSave'));
-        const playerSave = risikoSave.player[name]
+        const playerSave = risikoSave?.player[name]
 
         function setHeart() {
             playerSave.health = hearth
             world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));
         }
 
-        if (playerSave?.king) {
+        if (playerSave && playerSave?.kingdom) {
 
-            if (hearth <= 2 && hearth >= 0) {
+            if (playerSave?.king) {
 
-                setHeart();
-                sendMessage('risiko.setHeart.message', [String(name), String(hearth)], sender.name);
+                if (hearth <= 2 && hearth >= 0) {
+
+                    setHeart();
+                    sendMessage('risiko.setHeart.message', { withs: [name, hearth], name: sender.name });
+
+                } else {
+                    sendMessage('risiko.notAllowed.nummber', { withs: ['0', '2'], name: sender.name });
+                }
 
             } else {
 
-                sendMessage('risiko.notAllowed.nummber', ['0', '2'], sender.name);
+                if (hearth <= 1 && hearth >= 0) {
+
+                    setHeart();
+                    sendMessage('risiko.setHeart.message', { withs: [name, hearth], name: sender.name });
+
+                } else {
+                    sendMessage('risiko.notAllowed.nummber', { withs: ['0', '1'], name: sender.name });
+                }
             }
 
         } else {
 
-            if (hearth <= 1 && hearth >= 0) {
-
-                setHeart();
-                sendMessage('risiko.setHeart.message', [String(name), String(hearth)], sender.name);
-
-            } else {
-
-                sendMessage('risiko.notAllowed.nummber', ['0', '1'], sender.name);
-            }
+            sendMessage('risiko.NoFound.NoKingdom', { withs: name, name: sender.name })
         }
     })
 }

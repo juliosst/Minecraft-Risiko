@@ -18,7 +18,7 @@ world.afterEvents.entityHurt.subscribe((event) => {
 
             if (playerSave.combatlog === 'xxx') {
 
-                sendMessage('risiko.combat.start', '', player.name);
+                sendMessage('risiko.combat.start', { name: player.name });
             }
 
             if (health >= 10) {

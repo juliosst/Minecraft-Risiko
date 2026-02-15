@@ -11,6 +11,7 @@ risiko.notAllowed.nummber=§cEs ist nur der wert von §e%s - %s§c erlaubt
 risiko.setHeart.message=Die Herzen von §e%s§r wurden auf §e%s§r gesetzt
 risiko.data.reset=Daten von §e%s§r wurden gelöscht
 risiko.player.noFound=§e%s§r wurde nicht gefunden
+risiko.NoFound.NoKingdom=§e%s§r wurde nicht gefunden oder ist in Kein königreich
 
 risiko.ui.settings=Einstellungen
 risiko.ui.kingdom=Königreiche
@@ -22,6 +23,7 @@ risiko.death.player=%s ist gestorben
 risiko.combat.start=Du bist ab jetzt im Kampf!
 
 risiko.joinMessage=§l§6Willkommen bei Minecraft Risiko! §i(v%s)\n\n§ivon JuliosStefen\n§bBugs Melden: §r§bhttps://discord.gg/vSf4WSQRfm
+risiko.support.message=§bUnterstützt mich indem ihr Fehler auf GitHub oder in Discord Meldet
 risiko.nokingdom.error=§cDu bist in kein königreich
 
 risiko.combat.end=Du bist nicht mehr im Kampf

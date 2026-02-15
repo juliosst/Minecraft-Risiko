@@ -59,9 +59,9 @@ world.afterEvents.entityDie.subscribe(({ deadEntity, damageSource }) => {
 
             if (killer?.typeId === 'minecraft:player') {
 
-                sendMessage('risiko.death.attack', [deadEntity.name, killer.name]);
+                sendMessage('risiko.death.attack', { withs: [deadEntity.name, killer.name] });
             } else {
-                sendMessage('risiko.death.player', [deadEntity.name]);
+                sendMessage('risiko.death.player', { withs: [deadEntity.name] });
             }
 
             removeHearth(deadEntity.name);
@@ -70,7 +70,7 @@ world.afterEvents.entityDie.subscribe(({ deadEntity, damageSource }) => {
 
         if (deadEntity.typeId === 'risiko:dummy') {
 
-            sendMessage('risiko.offline.death', [deadEntity.nameTag]);
+            sendMessage('risiko.offline.death', { withs: [deadEntity.nameTag] });
             removeHearth(deadEntity.nameTag);
             clearCombat(true);
         }
