@@ -57,7 +57,7 @@ export function kingdom(sender) {
                         kingdom(sender);
 
                         sender.playSound('note.pling');
-                        sendMessage(sender.name, 'risiko.add.kingdom.success', [String(r.formValues)]);
+                        sendMessage('risiko.add.kingdom.success', [String(r.formValues)], sender.name);
                     }
                 })
             }

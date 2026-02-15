@@ -39,7 +39,7 @@ export function settings(sender) {
             if (r.canceled) return;
 
             if (!r.formValues[10]) {
-                sendMessage('risiko.settings.save', sender.name);
+                sendMessage('risiko.settings.save', '', sender.name);
 
                 risikoSave.settings = {
                     blockTrident: r.formValues[1],
@@ -53,17 +53,17 @@ export function settings(sender) {
 
             if (r.formValues[10]) {
                 risikoSave.settings = {}
-                sendMessage('risiko.settings.deleted', sender.name);
+                sendMessage('risiko.settings.deleted', '', sender.name);
             }
 
             if (r.formValues[11]) {
                 risikoSave.player = {}
-                sendMessage('risiko.players.deleted', sender.name);
+                sendMessage('risiko.players.deleted', '', sender.name);
             }
 
             if (r.formValues[12]) {
                 risikoSave.kingdom = {}
-                sendMessage('risiko.kingdom.deleted', sender.name);
+                sendMessage('risiko.kingdom.deleted', '', sender.name);
             }
 
             world.setDynamicProperty('risikoSave', JSON.stringify(risikoSave));

@@ -4,7 +4,7 @@ import { installSave, unlockTrident } from './install';
 installSave();
 unlockTrident();
 
-export const version = '1.2.1';
+export const version = '1.2.2';
 
 import '../commands/registry';
 import '../events/event';
